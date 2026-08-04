@@ -4,7 +4,7 @@ local L		= mod:GetLocalizedStrings()
 local UnitGUID, UnitName, GetSpellInfo = UnitGUID, UnitName, GetSpellInfo
 local UnitInRange, UnitIsUnit, UnitInVehicle, IsInRaid = UnitInRange, UnitIsUnit, UnitInVehicle, DBM.IsInRaid
 
-mod:SetRevision("20260804214627")
+mod:SetRevision("20260804215744")
 mod:SetCreatureID(36597)
 mod:SetEncounterID(856)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7)
@@ -33,8 +33,8 @@ mod:RegisterEventsInCombat(
 	"UNIT_AURA_UNFILTERED",
 	"UNIT_DIED",
 --	"UNIT_SPELLCAST_START boss1",
-	"UNIT_SPELLCAST_SUCCEEDED" -- unfiltered as of 14/04/2025, since Warmane broke boss1 units
---	"UNIT_SPELLCAST_SUCCEEDED boss1"
+--	"UNIT_SPELLCAST_SUCCEEDED" -- unfiltered as of 14/04/2025, since Warmane broke boss1 units
+	"UNIT_SPELLCAST_SUCCEEDED boss1"
 )
 
 -- switching to faster less cpu wasting UNIT_TARGET scanning method is not reliable, since this event only fires for LK if is target/focus. Such approach would require syncs to minimize risk of not catching the mechanic, with the downside of the performance gain being questionable
