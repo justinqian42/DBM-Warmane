@@ -4,11 +4,11 @@ local L		= mod:GetLocalizedStrings()
 local UnitGUID, UnitName, GetSpellInfo = UnitGUID, UnitName, GetSpellInfo
 local UnitInRange, UnitIsUnit, UnitInVehicle, IsInRaid = UnitInRange, UnitIsUnit, UnitInVehicle, DBM.IsInRaid
 
-mod:SetRevision("20260804215744")
+mod:SetRevision("20260805080840")
 mod:SetCreatureID(36597)
 mod:SetEncounterID(856)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7)
-mod:SetHotfixNoticeRev(20260804000000)
+mod:SetHotfixNoticeRev(20260805000000)
 mod:SetMinSyncRevision(20220921000000)
 
 mod:RegisterCombat("combat")
@@ -204,7 +204,7 @@ local warnedValkyrGUIDs = {}
 local valkyrTargets = {}
 local plagueHop = DBM:GetSpellInfo(70338)--Hop spellID only, not cast one.
 -- local soulshriek = GetSpellInfo(69242)
-local spellnameSummonValkyr = DBM:GetSpellInfo(74361) -- Summon Val'kyr (10N)
+local spellnameSummonValkyr = DBM:GetSpellInfo(69037) -- Summon Val'kyr (10N)
 local spellnameSummonValkyrPeriodic = DBM:GetSpellInfo(74361) -- Summon Val'kyr Periodic (10H, 25N, 25H)
 local plagueExpires = {}
 local grabIcon = 2
