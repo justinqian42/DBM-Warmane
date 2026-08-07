@@ -4,11 +4,11 @@ local L		= mod:GetLocalizedStrings()
 local UnitGUID, UnitName, GetSpellInfo = UnitGUID, UnitName, GetSpellInfo
 local UnitInRange, UnitIsUnit, UnitInVehicle, IsInRaid = UnitInRange, UnitIsUnit, UnitInVehicle, DBM.IsInRaid
 
-mod:SetRevision("20260805080840")
+mod:SetRevision("20260807230359")
 mod:SetCreatureID(36597)
 mod:SetEncounterID(856)
 mod:SetUsedIcons(1, 2, 3, 4, 5, 6, 7)
-mod:SetHotfixNoticeRev(20260805000000)
+mod:SetHotfixNoticeRev(20260807000000)
 mod:SetMinSyncRevision(20220921000000)
 
 mod:RegisterCombat("combat")
@@ -629,7 +629,6 @@ end
 function mod:SPELL_SUMMON(args)
 	local spellId = args.spellId
 	if spellId == 69037 then -- Summon Val'kyr
-		DBM:AddMsg("Summon Val'kyr SPELL_SUMMON unhidden from combat log. Notify Zidras on Discord or GitHub")
 		if self.Options.ShowFrame then
 			self:CreateFrame()
 		end
@@ -850,12 +849,13 @@ function mod:UNIT_SPELLCAST_SUCCEEDED(_, spellName)
 		self.vb.valkyrWaveCount = self.vb.valkyrWaveCount + 1
 		warnSummonValkyr:Show(self.vb.valkyrWaveCount)
 		timerSummonValkyr:Start(nil, self.vb.valkyrWaveCount+1)
+		--[[2026/08/07: Warmane fixed SPELL_SUMMON, so workaround is no longer needed. Leaving this commented out in case it breaks again.
 		if self.Options.ShowFrame then
 			self:CreateFrame()
 		end
 		if self.Options.ValkyrIcon then
 			self:ScanForMobs(36609, 1, self.vb.valkIcon, 3, nil, 12, "ValkyrIcon") -- 36609 is CID for Val'kyr Shadowguard
-		end
+		end]]
 	--[[
 	elseif spellName == GetSpellInfo(73654) then -- Harvest Souls (Heroic)
 		specWarnHarvestSouls:Show()
